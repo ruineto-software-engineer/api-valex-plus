@@ -1,12 +1,18 @@
 import { faker } from "@faker-js/faker";
-import * as employeeRepository from "../../src/repositories/employeeRepository.js";
+import * as cardRepository from "../../src/repositories/cardRepository.js";
 
-export default function cardBodyFactory(): employeeRepository.Employee {
+export default function employeeBodyFactory(): cardRepository.Card {
   return {
     id: faker.datatype.number(),
-    fullName: faker.name.findName(),
-    cpf: faker.internet.password(),
-    email: faker.internet.email(),
-    companyId: faker.datatype.number(),
+    employeeId: faker.datatype.number(),
+    number: '345823414922202',
+    cardholderName: 'FULANO P SILVA',
+    securityCode: '123',
+    expirationDate: '04/29',
+    password: null,
+    isVirtual: false,
+    originalCardId: null,
+    isBlocked: false,
+    type: 'restaurant'
   };
 }
