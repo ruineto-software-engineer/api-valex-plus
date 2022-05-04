@@ -25,12 +25,12 @@ export interface Card {
 export type CardInsertData = Omit<Card, "id">;
 export type CardUpdateData = Partial<Card>;
 
-export async function find() {
+async function find() { //ex
   const result = await connection.query<Card>("SELECT * FROM cards");
   return result.rows;
 }
 
-export async function findById(id: number) {
+async function findById(id: number) { //ex
   const result = await connection.query<Card, [number]>(
     "SELECT * FROM cards WHERE id=$1",
     [id]
@@ -39,19 +39,19 @@ export async function findById(id: number) {
   return result.rows[0];
 }
 
-export async function findByTypeAndEmployeeId(
+async function findByTypeAndEmployeeId( //ex
   type: TransactionTypes,
   employeeId: number
 ) {
   const result = await connection.query<Card, [TransactionTypes, number]>(
     `SELECT * FROM cards WHERE type=$1 AND "employeeId"=$2`,
     [type, employeeId]
-  );
+  ); 
 
   return result.rows[0];
 }
 
-export async function findByCardDetails(
+async function findByCardDetails( //ex
   number: string,
   cardholderName: string,
   expirationDate: string
@@ -67,7 +67,7 @@ export async function findByCardDetails(
   return result.rows[0];
 }
 
-export async function insert(cardData: CardInsertData) {
+async function insert(cardData: CardInsertData) { //ex
   const {
     employeeId,
     number,
@@ -102,7 +102,7 @@ export async function insert(cardData: CardInsertData) {
   );
 }
 
-export async function update(id: number, cardData: CardUpdateData) {
+async function update(id: number, cardData: CardUpdateData) { //ex
   const { objectColumns: cardColumns, objectValues: cardValues } =
     mapObjectToUpdateQuery({
       object: cardData,
@@ -119,6 +119,18 @@ export async function update(id: number, cardData: CardUpdateData) {
   );
 }
 
-export async function remove(id: number) {
+async function remove(id: number) {  //ex
   connection.query<any, [number]>("DELETE FROM cards WHERE id=$1", [id]);
 }
+
+const cardRepository = {
+  find,
+  findById,
+  findByTypeAndEmployeeId,
+  findByCardDetails,
+  insert,
+  update,
+  remove
+}
+
+export default cardRepository;

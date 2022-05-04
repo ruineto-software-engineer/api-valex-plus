@@ -1,6 +1,6 @@
 import * as employeeRepository from "../repositories/employeeRepository.js";
 
-export async function getById(id: number) {
+async function getById(id: number) {
   const employee = await employeeRepository.findById(id);
   if (!employee) {
     throw { type: "bad_request" };
@@ -8,3 +8,9 @@ export async function getById(id: number) {
 
   return employee;
 }
+
+const employeeService = {
+  getById
+}
+
+export default employeeService;

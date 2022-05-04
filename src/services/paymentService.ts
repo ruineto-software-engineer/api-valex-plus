@@ -1,7 +1,7 @@
 import * as paymentRepository from "../repositories/paymentRepository.js";
 import * as rechargeRepository from "../repositories/rechargeRepository.js";
 import * as businessService from "../services/businessService.js";
-import * as cardService from "../services/cardService.js";
+import cardService from "../services/cardService.js";
 import { sumTransactionWithAmount } from "./transactionService.js";
 
 export async function payment(

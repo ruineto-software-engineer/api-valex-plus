@@ -1,8 +1,14 @@
 import * as companyRepository from "../repositories/companyRepository.js";
 
-export async function validateApiKeyOrFail(apiKey: string) {
+async function validateApiKeyOrFail(apiKey: string) {
   const company = await companyRepository.findByApiKey(apiKey);
   if (!company) {
     throw { type: "unauthorized" };
   }
 }
+
+const companyService = {
+  validateApiKeyOrFail
+}
+
+export default companyService;

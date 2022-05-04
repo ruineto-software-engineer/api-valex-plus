@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import * as cardService from "../services/cardService.js";
+import cardService from "../services/cardService.js";
 
 export async function create(req: Request, res: Response) {
   const apiKey = req.headers["x-api-key"] as string;
