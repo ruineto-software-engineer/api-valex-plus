@@ -8,7 +8,7 @@ export default function employeeBodyFactory(): cardRepository.Card {
     number: '345823414922202',
     cardholderName: 'FULANO P SILVA',
     securityCode: '123',
-    expirationDate: '04/29',
+    expirationDate: '09/29',
     password: null,
     isVirtual: false,
     originalCardId: null,
